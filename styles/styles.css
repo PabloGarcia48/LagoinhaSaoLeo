@@ -91,16 +91,21 @@ a {
   height: 92px;
   margin-bottom: 18px;
   place-items: center;
-  border: 2px solid rgba(255, 255, 255, 0.72);
+  border: 2px solid rgba(240, 185, 88, 0.72);
   border-radius: 50%;
-  background:
-    linear-gradient(135deg, rgba(240, 185, 88, 0.96), rgba(238, 116, 93, 0.92)),
-    #f0b958;
-  box-shadow: var(--shadow);
-  color: #16100b;
-  font-size: 1.45rem;
-  font-weight: 800;
-  letter-spacing: 0;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 0 0 5px rgba(240, 185, 88, 0.12),
+    var(--shadow);
+  overflow: hidden;
+}
+
+.avatar img {
+  display: block;
+  width: 170%;
+  height: 170%;
+  object-fit: contain;
+  transform: translateY(-12%);
 }
 
 .eyebrow,
@@ -144,20 +149,47 @@ h2 {
 
 .quick-actions {
   display: flex;
-  gap: 10px;
+  gap: 16px;
 }
 
 .quick-actions a {
   display: grid;
+  position: relative;
   width: 46px;
   height: 46px;
   place-items: center;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
-  font-size: 0.77rem;
-  font-weight: 800;
+  overflow: hidden;
+}
+
+.quick-actions img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--social-icon-size, 40px);
+  height: var(--social-icon-size, 40px);
+  object-fit: contain;
+  transform: translate(-50%, -50%) scale(var(--social-icon-scale, 1));
+}
+
+.quick-actions a:nth-child(1) img {
+  --social-icon-size: 58px;
+  --social-icon-scale: 1.06;
+  object-fit: cover;
+}
+
+.quick-actions a:nth-child(2) img {
+  --social-icon-size: 58px;
+  --social-icon-scale: 1.2;
+}
+
+.quick-actions a:nth-child(3) img {
+  --social-icon-size: 52px;
+  --social-icon-scale: 1.28;
 }
 
 .links,
