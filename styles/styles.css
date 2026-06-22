@@ -192,20 +192,23 @@ h2 {
   --social-icon-scale: 1.28;
 }
 
+.info-panel {
+  margin-top: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
 .links,
-.info-panel,
-.action-band,
-.prayer,
-.giving {
+.action-band {
   margin-top: 16px;
 }
 
 .featured-link,
 .link-card,
-.info-panel,
-.action-band,
-.prayer,
-.giving {
+.action-band {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
@@ -290,11 +293,19 @@ footer span {
   font-weight: 800;
 }
 
-.info-panel,
-.action-band,
-.prayer,
-.giving {
+.action-band {
+  display: grid;
+  gap: 18px;
   padding: 20px;
+  background:
+    linear-gradient(135deg, rgba(238, 116, 93, 0.22), rgba(96, 199, 178, 0.12)),
+    var(--panel-solid);
+}
+
+.action-band p {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.55;
 }
 
 .schedule-list {
@@ -327,17 +338,7 @@ footer span {
   grid-column: 2;
 }
 
-.action-band {
-  display: grid;
-  gap: 18px;
-  background:
-    linear-gradient(135deg, rgba(238, 116, 93, 0.22), rgba(96, 199, 178, 0.12)),
-    var(--panel-solid);
-}
-
-.action-band p,
-.prayer p,
-.giving p {
+.info-panel > p:not(.section-label) {
   margin-bottom: 0;
   color: var(--muted);
   line-height: 1.55;
