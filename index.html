@@ -130,6 +130,39 @@
         </a>
       </section> -->
 
+      <section class="prayer" id="oracao" aria-labelledby="prayer-title">
+        <p class="section-label">Oração</p>
+        <h2 id="prayer-title">Envie seu pedido de oração</h2>
+        <p>
+          Nossa equipe quer orar com você. Escreva seu pedido e envie direto
+          pelo WhatsApp.
+        </p>
+
+        <form class="prayer-form" data-prayer-form>
+          <label for="prayer-name">Seu nome</label>
+          <input
+            id="prayer-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="Opcional"
+          />
+
+          <label for="prayer-message">Pedido de oração</label>
+          <textarea
+            id="prayer-message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Escreva seu pedido aqui"
+          ></textarea>
+
+          <button class="button-link" type="submit">
+            Enviar pelo WhatsApp
+          </button>
+        </form>
+      </section>
+
       <section class="giving" id="contribua" aria-labelledby="giving-title">
         <p class="section-label">Contribuição</p>
         <h2 id="giving-title">Dízimos e ofertas</h2>
@@ -157,8 +190,10 @@
       </footer>
     </main>
     <script>
+      const whatsappNumber = "5551993482929";
       const copyPixButton = document.querySelector("[data-copy-pix]");
       const pixKey = document.querySelector("#pix-key")?.textContent?.trim();
+      const prayerForm = document.querySelector("[data-prayer-form]");
 
       copyPixButton?.addEventListener("click", async () => {
         if (!pixKey) return;
@@ -173,6 +208,30 @@
         window.setTimeout(() => {
           copyPixButton.textContent = "Copiar chave Pix";
         }, 2200);
+      });
+
+      prayerForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(prayerForm);
+        const name = formData.get("name")?.toString().trim();
+        const message = formData.get("message")?.toString().trim();
+
+        if (!message) return;
+
+        const text = [
+          "Olá, vim pelo site da Lagoinha São Leopoldo.",
+          name ? `Meu nome é ${name}.` : "",
+          "Gostaria de deixar um pedido de oração:",
+          message,
+        ]
+          .filter(Boolean)
+          .join("\n\n");
+
+        window.open(
+          `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`,
+          "_blank"
+        );
       });
     </script>
   </body>

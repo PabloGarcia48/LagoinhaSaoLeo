@@ -195,6 +195,7 @@ h2 {
 .links,
 .info-panel,
 .action-band,
+.prayer,
 .giving {
   margin-top: 16px;
 }
@@ -203,6 +204,7 @@ h2 {
 .link-card,
 .info-panel,
 .action-band,
+.prayer,
 .giving {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -290,6 +292,7 @@ footer span {
 
 .info-panel,
 .action-band,
+.prayer,
 .giving {
   padding: 20px;
 }
@@ -333,10 +336,60 @@ footer span {
 }
 
 .action-band p,
+.prayer p,
 .giving p {
   margin-bottom: 0;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.prayer-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.prayer-form label {
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.prayer-form input,
+.prayer-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+  font: inherit;
+}
+
+.prayer-form input {
+  min-height: 48px;
+  padding: 0 14px;
+}
+
+.prayer-form textarea {
+  min-height: 132px;
+  padding: 14px;
+  resize: vertical;
+}
+
+.prayer-form input::placeholder,
+.prayer-form textarea::placeholder {
+  color: rgba(212, 198, 183, 0.68);
+}
+
+.prayer-form input:focus,
+.prayer-form textarea:focus {
+  border-color: rgba(240, 185, 88, 0.72);
+  outline: none;
+}
+
+.prayer-form .button-link {
+  width: 100%;
+  margin-top: 8px;
 }
 
 .pix-qr-code {
