@@ -57,6 +57,14 @@
             </span>
           </a>
 
+          <a class="link-card" href="#galeria">
+            <span class="icon" aria-hidden="true">▣</span>
+            <span>
+              <strong>Fotos dos cultos</strong>
+              <small>Veja os registros por data</small>
+            </span>
+          </a>
+
       </section>
 
       <section class="info-panel" id="agenda" aria-labelledby="agenda-title">
@@ -154,6 +162,22 @@
         </p>
       </section>
 
+      <section class="info-panel gallery-panel" id="galeria" aria-labelledby="gallery-title">
+        <div class="gallery-heading">
+          <div>
+            <p class="section-label">Galeria</p>
+            <h2 id="gallery-title">Fotos dos cultos</h2>
+          </div>
+          <span class="gallery-count" data-gallery-count></span>
+        </div>
+
+        <div class="album-tabs" data-album-tabs aria-label="Cultos por data"></div>
+        <div class="photo-grid" data-photo-grid aria-live="polite"></div>
+        <p class="gallery-empty" data-gallery-empty>
+          Escolha uma data para ver as fotos.
+        </p>
+      </section>
+
       <footer class="site-footer">
         <div class="church-footer">
           <strong>Lagoinha São Leopoldo</strong>
@@ -181,6 +205,20 @@
         </div>
       </footer>
     </main>
+
+    <div class="photo-lightbox" data-lightbox hidden>
+      <button class="lightbox-close" type="button" data-lightbox-close aria-label="Fechar foto">
+        ×
+      </button>
+      <button class="lightbox-nav previous" type="button" data-lightbox-previous aria-label="Foto anterior">
+        ‹
+      </button>
+      <img src="" alt="" data-lightbox-image />
+      <button class="lightbox-nav next" type="button" data-lightbox-next aria-label="Próxima foto">
+        ›
+      </button>
+    </div>
+
     <script src="./scripts/script.js"></script>
   </body>
 </html>

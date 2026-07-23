@@ -206,6 +206,11 @@ h2 {
   margin-top: 16px;
 }
 
+.links {
+  display: grid;
+  gap: 10px;
+}
+
 .featured-link,
 .link-card,
 .action-band {
@@ -342,6 +347,181 @@ h2 {
   margin-bottom: 0;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.gallery-panel {
+  overflow: hidden;
+}
+
+.gallery-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gallery-count {
+  padding-top: 4px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.album-tabs {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 4px;
+  margin: 12px -2px 16px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.album-tab {
+  display: inline-flex;
+  min-width: max-content;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.album-tab:hover,
+.album-tab[aria-selected="true"] {
+  border-color: rgba(240, 185, 88, 0.72);
+  background: rgba(240, 185, 88, 0.16);
+}
+
+.album-tab[aria-selected="true"] {
+  color: var(--gold);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.photo-grid[hidden] {
+  display: none;
+}
+
+.photo-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease;
+}
+
+.photo-button:hover {
+  border-color: rgba(96, 199, 178, 0.72);
+  transform: translateY(-2px);
+}
+
+.photo-button img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.gallery-empty {
+  margin: 14px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.photo-lightbox {
+  display: grid;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: 8px;
+  padding: 64px 12px 22px;
+  background: rgba(4, 7, 10, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.photo-lightbox[hidden] {
+  display: none;
+}
+
+.photo-lightbox img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 96px);
+  justify-self: center;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  object-fit: contain;
+}
+
+.lightbox-close,
+.lightbox-nav {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  border-color: rgba(240, 185, 88, 0.72);
+  background: rgba(240, 185, 88, 0.16);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.lightbox-nav {
+  width: 44px;
+  height: 60px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.lightbox-nav.previous {
+  grid-column: 1;
+}
+
+.lightbox-nav.next {
+  grid-column: 3;
 }
 
 .prayer-form {
@@ -524,6 +704,15 @@ h2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .links,
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-grid {
+    gap: 10px;
+  }
+
   .action-band {
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -532,6 +721,17 @@ h2 {
   .button-link {
     min-width: 180px;
     padding-inline: 22px;
+  }
+
+  .photo-lightbox {
+    grid-template-columns: 72px 1fr 72px;
+    gap: 18px;
+    padding-inline: 24px;
+  }
+
+  .lightbox-nav {
+    width: 56px;
+    height: 72px;
   }
 }
 
