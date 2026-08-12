@@ -69,17 +69,52 @@ const renderAlbumTabs = () => {
   albumTabs.innerHTML = "";
 
   galleryAlbums.forEach((album, index) => {
+    const photos = album.photos ?? [];
+    const coverPhoto = photos[0];
     const button = document.createElement("button");
-    button.className = "album-tab";
+    button.className = "album-card";
     button.type = "button";
-    button.textContent = formatDate(album.date);
+    button.setAttribute(
+      "aria-label",
+      `${index === 0 ? "Último culto, " : ""}${formatDate(album.date)}, ${photos.length} ${
+        photos.length === 1 ? "foto" : "fotos"
+      }`
+    );
     button.setAttribute("aria-selected", String(index === selectedAlbumIndex));
     button.setAttribute("aria-expanded", String(index === selectedAlbumIndex));
 
+    if (coverPhoto) {
+      const image = document.createElement("img");
+      image.src = coverPhoto.src;
+      image.alt = "";
+      image.loading = index === 0 ? "eager" : "lazy";
+      button.append(image);
+    }
+
+    const details = document.createElement("span");
+    details.className = "album-card-details";
+
+    if (index === 0) {
+      const badge = document.createElement("span");
+      badge.className = "album-card-badge";
+      badge.textContent = "Último culto";
+      details.append(badge);
+    }
+
+    const date = document.createElement("strong");
+    date.textContent = formatDate(album.date);
+
+    const meta = document.createElement("span");
+    meta.textContent = `${photos.length} ${photos.length === 1 ? "foto" : "fotos"}`;
+
+    details.append(date, meta);
+    button.append(details);
+
     button.addEventListener("click", () => {
-      selectedAlbumIndex = selectedAlbumIndex === index ? null : index;
+      selectedAlbumIndex = index;
       selectedPhotoIndex = 0;
       renderGallery();
+      openLightbox(0);
     });
 
     albumTabs.append(button);
@@ -93,34 +128,18 @@ const renderPhotos = () => {
   const photos = album?.photos ?? [];
 
   photoGrid.innerHTML = "";
-  photoGrid.hidden = selectedAlbumIndex === null;
+  photoGrid.hidden = true;
 
   if (selectedAlbumIndex === null) {
     galleryEmpty.hidden = false;
-    galleryEmpty.textContent = "Escolha uma data para ver as fotos.";
-    galleryCount.textContent = "";
+    galleryEmpty.textContent = "Escolha um culto e relembre esse momento.";
+    galleryCount.textContent = `${galleryAlbums.length} ${galleryAlbums.length === 1 ? "culto" : "cultos"}`;
     return;
   }
 
-  galleryEmpty.hidden = photos.length > 0;
+  galleryEmpty.hidden = true;
   galleryEmpty.textContent = "Nenhuma foto encontrada para este álbum.";
   galleryCount.textContent = `${photos.length} ${photos.length === 1 ? "foto" : "fotos"}`;
-
-  photos.forEach((photo, index) => {
-    const button = document.createElement("button");
-    button.className = "photo-button";
-    button.type = "button";
-    button.setAttribute("aria-label", `Ampliar foto ${index + 1}`);
-
-    const image = document.createElement("img");
-    image.src = photo.src;
-    image.alt = photo.alt || `Foto do culto em ${formatDate(album.date)}`;
-    image.loading = index < 4 ? "eager" : "lazy";
-
-    button.append(image);
-    button.addEventListener("click", () => openLightbox(index));
-    photoGrid.append(button);
-  });
 };
 
 const renderGallery = () => {
