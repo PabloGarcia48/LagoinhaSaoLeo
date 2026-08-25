@@ -76,7 +76,7 @@ const renderAlbumTabs = () => {
     button.type = "button";
     button.setAttribute(
       "aria-label",
-      `${index === 0 ? "Último culto, " : ""}${formatDate(album.date)}, ${photos.length} ${
+      `${index === 0 ? "Registro em destaque, " : ""}${formatDate(album.date)}, ${photos.length} ${
         photos.length === 1 ? "foto" : "fotos"
       }`
     );
@@ -97,7 +97,7 @@ const renderAlbumTabs = () => {
     if (index === 0) {
       const badge = document.createElement("span");
       badge.className = "album-card-badge";
-      badge.textContent = "Último culto";
+      badge.textContent = "Registro";
       details.append(badge);
     }
 
@@ -132,8 +132,8 @@ const renderPhotos = () => {
 
   if (selectedAlbumIndex === null) {
     galleryEmpty.hidden = false;
-    galleryEmpty.textContent = "Escolha um culto e relembre esse momento.";
-    galleryCount.textContent = `${galleryAlbums.length} ${galleryAlbums.length === 1 ? "culto" : "cultos"}`;
+    galleryEmpty.textContent = "Escolha uma data e relembre esse começo.";
+    galleryCount.textContent = `${galleryAlbums.length} ${galleryAlbums.length === 1 ? "registro" : "registros"}`;
     return;
   }
 
