@@ -176,18 +176,23 @@ h2 {
   transform: translate(-50%, -50%) scale(var(--social-icon-scale, 1));
 }
 
-.quick-actions a:nth-child(1) img {
+.quick-actions .social-instagram img {
   --social-icon-size: 58px;
   --social-icon-scale: 1.06;
   object-fit: cover;
 }
 
-.quick-actions a:nth-child(2) img {
+.quick-actions .social-youtube img {
   --social-icon-size: 58px;
   --social-icon-scale: 1.2;
 }
 
-.quick-actions a:nth-child(3) img {
+.quick-actions .social-spotify img {
+  --social-icon-size: 36px;
+  --social-icon-scale: 1;
+}
+
+.quick-actions .social-whatsapp img {
   --social-icon-size: 52px;
   --social-icon-scale: 1.28;
 }
@@ -297,6 +302,13 @@ h2 {
   background: rgba(96, 199, 178, 0.18);
   color: var(--teal);
   font-weight: 800;
+}
+
+.icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .action-band {
