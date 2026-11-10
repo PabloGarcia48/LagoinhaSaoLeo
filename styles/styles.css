@@ -147,6 +147,29 @@ h2 {
   line-height: 1.55;
 }
 
+.service-invite {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  max-width: 32rem;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid rgba(240, 185, 88, 0.35);
+  border-radius: 8px;
+  background: var(--panel);
+  line-height: 1.4;
+}
+
+.service-invite strong,
+.service-invite small {
+  color: var(--gold);
+}
+
+.service-invite span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
 .quick-actions {
   display: flex;
   gap: 16px;
@@ -284,7 +307,19 @@ h2 {
     background 160ms ease;
 }
 
-.link-card:hover,
+.link-card-highlight {
+  border-color: rgba(240, 185, 88, 0.45);
+  background:
+    linear-gradient(135deg, rgba(240, 185, 88, 0.12), transparent),
+    var(--panel-solid);
+}
+
+.link-card-highlight .icon {
+  background: rgba(240, 185, 88, 0.18);
+  color: var(--gold);
+}
+
+.link-card[href]:hover,
 .featured-link:hover,
 .button-link:hover,
 .quick-actions a:hover {
@@ -777,9 +812,9 @@ h2 {
   display: block;
   width: min(100%, 280px);
   margin: 18px auto;
-  border: 8px solid rgba(255, 255, 255, 0.95);
+  border: 0;
   border-radius: 8px;
-  background: #ffffff;
+  background: transparent;
 }
 
 .pix-key {
